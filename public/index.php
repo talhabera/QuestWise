@@ -2,7 +2,6 @@
 
 require_once '../config/config.php';
 require_once '../app/Router.php';
-
 require_once '../routes/web.php';
 
 $requestPath = $_SERVER['REQUEST_URI'];
