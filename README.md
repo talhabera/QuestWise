@@ -32,13 +32,13 @@ QuestWise is a task management platform built using the PHP Model-View-Controlle
 
 ## Project Structure
 - `app`: Contains the core application files
-    - `config.php`: Configuration file for database connection and other settings
     - `controllers`: Contains controllers to handle user requests
     - `models`: Contains models for interacting with the database
     - `views`: Contains the user interface files (HTML, CSS, JS)
+- `config`: Contains the config file for database connection and other settings
 - `database`: Contains the SQL file to set up the database tables
 - `public`: Contains publicly accessible files (CSS, JS, images)
-- `routes`: Contains the file containing the routes that can be visited on the website and the controllers and actions they are connected to.
+- `routes`: Contains the route file containing the routes that can be visited on the website and the controllers and actions they are connected to.
 
 ## Credits
 QuestWise was developed by [Talha Bera](https://github.com/talhabera). Special thanks to the open-source community and all contributors who made this project possible.
