@@ -20,7 +20,7 @@ QuestWise is a task management platform built using the PHP Model-View-Controlle
 1. Clone the repository or download the ZIP file.
 2. Create a MySQL database for QuestWise.
 3. Import the `database.sql` file located in the `database` folder into your MySQL database.
-4. Configure the database connection in `config.php` located in the `app` folder.
+4. Configure the database connection in `config.php` located in the `config` folder.
 
 ## Usage
 1. Set up a virtual host or configure your web server to point to the QuestWise project folder.
