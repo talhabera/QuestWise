@@ -1,9 +1,122 @@
 body {
+    font-family: 'Jua', serif;
+}
+
+body {
+    background-color: var(--primary-color);
+}
+
+body,
+.navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-toggler-icon {
+    color: white;
+}
+
+/* Change link colors */
+a {
+    color: #17a2b8;
+    /* Bootstrap's default link color */
+}
+
+a:hover {
+    color: #138496;
+    /* Darker shade for hover state */
+}
+
+/* Change headings color */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: white;
+}
+
+/* Change button colors */
+.btn-primary {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-primary:hover {
+    background-color: #138496;
+    border-color: #138496;
+}
+
+/* Change form input colors */
+.form-control {
+    background-color: #333333;
+    color: white;
+}
+
+/* Change alert colors */
+.alert {
+    background-color: #444444;
+    border-color: #333333;
+    color: white;
+}
+
+/* Change badge colors */
+.badge-primary {
+    background-color: #e8e8e8;
+}
+
+/* Change card colors */
+.card {
+    background-color: #333333;
+    color: white;
+}
+
+/* Change table colors */
+.table {
+    color: white;
+}
+
+/* Change pagination colors */
+.pagination .page-link {
+    background-color: #444444;
+    border-color: #333333;
+    color: white;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color: #138496;
+}
+
+.navbar {
+    background-color: transparent;
+    border-color: var(--primary-color);
+}
+
+.navbar-toggler-icon {
+    background-color: white;
+}
+
+.navbar-toggler {
+    border-color: white;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+
+body {
     min-height: 100vh;
     margin: 0;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    background-color: #ffffff;
+    background-color: var(--primary-color);
 }
 
 header {
@@ -12,20 +125,14 @@ header {
 
 footer {
     min-height: 50px;
+    border-top: 1px solid #D0D1D2;
 }
 
 :root {
-    --primary-color: #FFDC7D;
-    --secondary-color: #E1FF7D;
-    --tertiary-color: #FF9B7D;
-}
-
-.navbar {
-    background: rgb(255, 155, 125);
-    background: linear-gradient(90deg, rgba(255, 155, 125, 1) 0%, rgba(225, 255, 125, 1) 35%, rgba(255, 220, 125, 1) 100%);
-
-    border-bottom: 1px solid var(--secondary-color);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    --primary-color: #212f45;
+    --secondary-color: #e8e8e8;
+    --tertiary-color: #5B9A8B;
+    --quaternary-color: #F7E987;
 }
 
 .navbar-light .navbar-toggler-icon {
@@ -42,7 +149,6 @@ footer {
 }
 
 .dropdown-menu {
-    background: rgb(255, 155, 125);
-    background: linear-gradient(90deg, rgba(255, 155, 125, 1) 0%, rgba(255, 220, 125, 1) 100%);
+    background: var(--primary-color);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }

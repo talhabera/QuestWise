@@ -23,7 +23,7 @@
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Your+Google+Font:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jua" rel="stylesheet">
 
     <!-- OpenGraph -->
     <meta property="og:title" content="QuestWise - Task Management with Gamification">
@@ -102,7 +102,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer bg-light text-center py-3">
+    <footer class="footer text-center py-3">
         <div class="container">
             &copy; 2023 QuestWise - Task Management with Gamification. All rights reserved.
         </div>
