@@ -120,8 +120,8 @@ footer {
 :root {
     --primary-color: #212f45;
     --secondary-color: #e8e8e8;
-    --tertiary-color: #5B9A8B;
-    --quaternary-color: #F7E987;
+    --tertiary-color: #bfbfbf;
+    --quaternary-color: #96939b;
 }
 
 .navbar-light .navbar-toggler-icon {
