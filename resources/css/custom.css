@@ -12,18 +12,14 @@ body,
     color: white;
 }
 
-/* Change link colors */
 a {
     color: #17a2b8;
-    /* Bootstrap's default link color */
 }
 
 a:hover {
     color: #138496;
-    /* Darker shade for hover state */
 }
 
-/* Change headings color */
 h1,
 h2,
 h3,
@@ -33,7 +29,6 @@ h6 {
     color: white;
 }
 
-/* Change button colors */
 .btn-primary {
     background-color: #17a2b8;
     border-color: #17a2b8;
@@ -44,36 +39,30 @@ h6 {
     border-color: #138496;
 }
 
-/* Change form input colors */
 .form-control {
     background-color: #333333;
     color: white;
 }
 
-/* Change alert colors */
 .alert {
     background-color: #444444;
     border-color: #333333;
     color: white;
 }
 
-/* Change badge colors */
 .badge-primary {
     background-color: #e8e8e8;
 }
 
-/* Change card colors */
 .card {
     background-color: #333333;
     color: white;
 }
 
-/* Change table colors */
 .table {
     color: white;
 }
 
-/* Change pagination colors */
 .pagination .page-link {
     background-color: #444444;
     border-color: #333333;
