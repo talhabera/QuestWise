@@ -39,7 +39,7 @@
     <meta name="twitter:image" content="/resources/images/questwise.png">
 </head>
 
-<body>
+<body data-bs-theme="dark">
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light">

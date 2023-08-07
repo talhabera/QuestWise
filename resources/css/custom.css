@@ -1,111 +1,10 @@
 body {
-    font-family: 'Jua', serif;
-}
-
-body {
-    background-color: var(--primary-color);
-}
-
-body,
-.navbar-dark .navbar-nav .nav-link,
-.navbar-dark .navbar-toggler-icon {
-    color: white;
-}
-
-a {
-    color: #17a2b8;
-}
-
-a:hover {
-    color: #138496;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: white;
-}
-
-.btn-primary {
-    background-color: #17a2b8;
-    border-color: #17a2b8;
-}
-
-.btn-primary:hover {
-    background-color: #138496;
-    border-color: #138496;
-}
-
-.form-control {
-    background-color: #333333;
-    color: white;
-}
-
-.alert {
-    background-color: #444444;
-    border-color: #333333;
-    color: white;
-}
-
-.badge-primary {
-    background-color: #e8e8e8;
-}
-
-.card {
-    background-color: #333333;
-    color: white;
-}
-
-.table {
-    color: white;
-}
-
-.pagination .page-link {
-    background-color: #444444;
-    border-color: #333333;
-    color: white;
-}
-
-.pagination .page-item.active .page-link {
-    background-color: #17a2b8;
-    border-color: #17a2b8;
-}
-
-.nav-link {
-    color: white;
-}
-
-.nav-link:hover {
-    color: #138496;
-}
-
-.navbar {
-    background-color: transparent;
-    border-color: var(--primary-color);
-}
-
-.navbar-toggler-icon {
-    background-color: white;
-}
-
-.navbar-toggler {
-    border-color: white;
-}
-
-.navbar-brand {
-    color: white;
-}
-
-
-body {
     min-height: 100vh;
     margin: 0;
     display: grid;
     grid-template-rows: auto 1fr auto;
     background-color: var(--primary-color);
+    font-family: 'Jua', serif;
 }
 
 header {
@@ -122,6 +21,10 @@ footer {
     --secondary-color: #e8e8e8;
     --tertiary-color: #bfbfbf;
     --quaternary-color: #96939b;
+}
+
+.navbar {
+    background-color: transparent;
 }
 
 .navbar-light .navbar-toggler-icon {
