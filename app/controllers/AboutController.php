@@ -1,12 +1,9 @@
 <?php
 
-class AboutController
+class AboutController extends Controller
 {
-    public function index($id, $user)
+    public function indexAction()
     {
-        $model = new stdClass();
-        $model->id = $id;
-        $model->user = $user;
         require_once '../app/views/about/index.php';
     }
 }

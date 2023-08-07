@@ -1,10 +1,10 @@
 <?php
 
-class HomeController
+class HomeController extends Controller
 {
-    public function index()
+    public function indexAction()
     {
-        require_once '../app/views/home/index.php';
+        $this->view();
     }
 }
 ?>

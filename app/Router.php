@@ -1,24 +1,61 @@
 <?php
 
+/**
+ * This class handles the routing of the application.
+ */
 class Router
 {
     protected static $routes = [];
 
+    /**
+     * Register a route
+     *
+     * @param string $url The route URL
+     * @param mixed $action The route controller action
+     * @return void
+     */
     public static function get($url, $action)
     {
         self::$routes['GET'][$url] = $action;
     }
 
+    /**
+     * Register a route
+     *
+     * @param string $url The route URL
+     * @param mixed $action The route controller action
+     * @return void
+     */
     public static function post($url, $action)
     {
         self::$routes['POST'][$url] = $action;
     }
 
+    /**
+     * Dispatch the router, creating the controller object and running the
+     * action method.
+     *
+     * @param string $url The route URL
+     * @param string $method The request HTTP method
+     * @return void
+     */
     public static function dispatch($url, $method)
     {
         $urlParts = explode('?', $url);
         $urlWithoutQuery = $urlParts[0];
         $params = [];
+
+        if (substr($urlWithoutQuery, 0, strlen('/resources/')) === '/resources/') {
+            // Serve static resources
+            $resourcePath = substr($urlWithoutQuery, strlen('/resources/'));
+            $resourcePath = "../resources/{$resourcePath}";
+            if (file_exists($resourcePath)) {
+                $mimeType = mime_content_type($resourcePath);
+                header("Content-Type: {$mimeType}");
+                readfile($resourcePath);
+            }
+            return;
+        }
 
         if (array_key_exists($method, self::$routes)) {
             foreach (self::$routes[$method] as $route => $action) {
@@ -27,26 +64,20 @@ class Router
 
                 // Check if the URL matches the pattern
                 if (preg_match($pattern, $urlWithoutQuery, $matches)) {
-                    if (is_callable($action)) {
-                        $action();
-                    } elseif (is_string($action)) {
-                        // Extract the captured route parameters
-                        $params = $matches;
-                        unset($params[0]);
+                    // Extract the captured route parameters
+                    $params = $matches;
+                    unset($params[0]);
 
-                        // Append the query string parameters to the $params array
-                        $queryString = $urlParts[1] ?? '';
-                        parse_str($queryString, $queryArray);
-                        $params = array_merge($params, $queryArray);
+                    // Append the query string parameters to the $params array
+                    $queryString = $urlParts[1] ?? '';
+                    parse_str($queryString, $queryArray);
+                    $params = array_merge($params, $queryArray);
 
-                        // Append the request body as an object to the $params array
-                        $input = self::getRequestBody();
-                        $params['input'] = $input;
+                    $parts = explode('@', $action);
+                    $controllerName = $parts[0];
+                    $actionName = $parts[1];
 
-                        $parts = explode('@', $action);
-                        $controllerName = $parts[0];
-                        $actionName = $parts[1];
-
+                    try {
                         require_once "../app/controllers/{$controllerName}.php";
                         $controller = new $controllerName();
 
@@ -59,8 +90,20 @@ class Router
                             $paramName = $param->getName();
                             $resolvedParams[] = $params[$paramName] ?? null;
                         }
+                    } catch (Throwable $e) {
+                        echo $e->getMessage();
+                        // Handle 404 - Controller or action not found
+                        echo "404 Not found.";
+                        return;
+                    }
 
+                    try {
                         $controller->$actionName(...$resolvedParams);
+                    } catch (Throwable $e) {
+                        echo $e->getMessage();
+                        // Handle 500 - Unhandled exception in controller action
+                        echo "500 Internal Server Error";
+                        return;
                     }
 
                     return; // Stop searching once a matching route is found
@@ -69,23 +112,6 @@ class Router
         }
 
         // Handle 404 - Route not found
-        echo "{$method} {$url}<br>Route not found.";
-    }
-
-    private static function getRequestBody(): object|null
-    {
-        // Read the raw input from the request
-        $rawData = file_get_contents('php://input');
-        var_dump($rawData);
-
-        // Assuming the content is in JSON format, decode it into an object
-        $dataObject = json_decode($rawData);
-
-        // If decoding fails, you can return null or throw an exception
-        if ($dataObject === null && json_last_error() !== JSON_ERROR_NONE) {
-            return null;
-        }
-
-        return $dataObject;
+        echo "404 Not found.";
     }
 }
