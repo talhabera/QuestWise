@@ -1,6 +1,8 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    RewriteRule ^resources/ - [L]
+
     RewriteRule ^public/ - [L]
 
     RewriteCond %{DOCUMENT_ROOT}/public/$1 -f

@@ -45,18 +45,6 @@ class Router
         $urlWithoutQuery = $urlParts[0];
         $params = [];
 
-        if (substr($urlWithoutQuery, 0, strlen('/resources/')) === '/resources/') {
-            // Serve static resources
-            $resourcePath = substr($urlWithoutQuery, strlen('/resources/'));
-            $resourcePath = "../resources/{$resourcePath}";
-            if (file_exists($resourcePath)) {
-                $mimeType = mime_content_type($resourcePath);
-                header("Content-Type: {$mimeType}");
-                readfile($resourcePath);
-            }
-            return;
-        }
-
         if (array_key_exists($method, self::$routes)) {
             foreach (self::$routes[$method] as $route => $action) {
                 // Convert the route to a regular expression pattern

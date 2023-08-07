@@ -3,6 +3,7 @@ body {
     margin: 0;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    background-color: #ffffff;
 }
 
 header {
@@ -11,4 +12,37 @@ header {
 
 footer {
     min-height: 50px;
+}
+
+:root {
+    --primary-color: #FFDC7D;
+    --secondary-color: #E1FF7D;
+    --tertiary-color: #FF9B7D;
+}
+
+.navbar {
+    background: rgb(255, 155, 125);
+    background: linear-gradient(90deg, rgba(255, 155, 125, 1) 0%, rgba(225, 255, 125, 1) 35%, rgba(255, 220, 125, 1) 100%);
+
+    border-bottom: 1px solid var(--secondary-color);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    padding: 6px;
+}
+
+.navbar .profile-image {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.dropdown-menu {
+    background: rgb(255, 155, 125);
+    background: linear-gradient(90deg, rgba(255, 155, 125, 1) 0%, rgba(255, 220, 125, 1) 100%);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }

@@ -42,33 +42,62 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-        <div class="container">
-            <a class="navbar-brand" href="#">QuestWise</a>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><img src="/resources/questwise_logo.png" height="30" class="d-inline-block align-top" alt="QuestWise"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="groupsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Groups
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="groupsDropdown">
+                            <li><a class="dropdown-item" href="/teams">Teams</a></li>
+                            <li><a class="dropdown-item" href="/projects">Projects</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Quests</a>
+                        <a class="nav-link" href="/tasks">Tasks</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Rewards</a>
+                        <a class="nav-link" href="/gamification/leaderboard">Leaderboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
+                        <a class="nav-link" href="/profile">Profile</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/notifications">Notifications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/help-and-support/faqs">Help & Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about-us/company-information">About Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://avatars.githubusercontent.com/u/91506632?v=4" alt="User Image" class="profile-image">
+                    User Name
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end profile-menu" aria-labelledby="userDropdown">
+                    <li><a class="dropdown-item" href="/profile/settings">Settings</a></li>
+                    <li><a class="dropdown-item" href="/profile/change-password">Change Password</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <div id="content" class="wrapper">
+    <div id="content">
         <?php require_once $contentView; ?>
     </div>
 
