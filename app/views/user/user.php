@@ -9,7 +9,7 @@
                     <?php if ($model->user['avatar_url']) : ?>
                         <img src="<?= $model->user['avatar_url'] ?>" width="150" height="150" class="user-icon mb-2">
                     <?php else : ?>
-                        <img src="/resources/images/default_avatar.jpg" width="150" height="150" class="user-icon mb-3">
+                        <img src="/questwise/resources/images/default_avatar.jpg" width="150" height="150" class="user-icon mb-3">
                     <?php endif; ?>
                     <h5 class="card-title">Username: <?= $model->user['username'] ?></h5>
                     <p class="card-text"><strong>Email :</strong><?= $model->user['email'] ?></p>

@@ -105,7 +105,7 @@ class AchievementRepository
         return $result > 0;
     }
 
-    public function getAchievementByTitle($title): array|null
+    public function getAchievementByTitle($title)
     {
         $sql = "SELECT * FROM achievements WHERE title = :title";
         $params = array(":title" => $title);

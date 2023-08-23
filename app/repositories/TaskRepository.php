@@ -73,7 +73,7 @@ class TaskRepository
         return $result;
     }
 
-    public function getTask($id): array|null
+    public function getTask($id)
     {
         $sql = "SELECT
                 t.task_id, 

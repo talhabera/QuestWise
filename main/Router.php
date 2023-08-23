@@ -53,7 +53,6 @@ class Router
         $urlParts = explode('?', $url);
         $urlWithoutQuery = $urlParts[0];
         $params = [];
-
         if (array_key_exists($method, $this->routes)) {
             foreach ($this->routes[$method] as $route => $action) {
                 // Convert the route to a regular expression pattern
@@ -106,7 +105,7 @@ class Router
                 }
             }
         }
-
+        
         // Handle 404 - Route not found
         require_once '../app/views/errors/notfound.php';
         exit();

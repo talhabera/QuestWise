@@ -12,8 +12,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="/admin">
-                <img src="/resources/images/questwise_nobg.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="/questwise/admin">
+                <img src="/questwise/resources/images/questwise_nobg.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
                 QuestWise
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,10 +22,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/users">Users</a>
+                        <a class="nav-link" href="/questwise/admin/users">Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/quests">Quests</a>
+                        <a class="nav-link" href="/questwise/admin/quests">Quests</a>
                     </li>
                     <?php if (isset($_SESSION['admin_username'])) : ?>
                         <li class="nav-item dropdown">
@@ -33,12 +33,12 @@
                                 <?php echo $_SESSION['admin_username']; ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                                <li><a class="dropdown-item" href="/admin/logout">Logout</a></li>
+                                <li><a class="dropdown-item" href="/questwise/admin/logout">Logout</a></li>
                             </ul>
                         </li>
                     <?php else : ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login">Login</a>
+                            <a class="nav-link" href="/questwise/login">Login</a>
                         </li>
                     <?php endif; ?>
                 </ul>

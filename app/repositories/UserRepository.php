@@ -9,7 +9,7 @@ class UserRepository
         $this->dbContext = $dbContext;
     }
 
-    public function getUser($username): array|null
+    public function getUser($username)
     {
         $sql = "SELECT * FROM users WHERE username = ?";
         $users = $this->dbContext->query($sql, [$username]);

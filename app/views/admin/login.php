@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="login-form">
-                            <form action="/admin/login" method="POST">
+                            <form action="/questwise/admin/login" method="POST">
                                 <?php if ($model) echo $model; ?>
                                 <div class="mb-3">
                                     <label for="loginUsername" class="form-label">Username</label>

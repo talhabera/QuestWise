@@ -13,7 +13,7 @@ class CommentController extends Controller
         $this->commentService = $commentService;
     }
 
-    public function sendCommentAction()
+    public function send_commentAction()
     {
         $comment = $_POST['comment'];
         $taskId = $_POST['taskId'];

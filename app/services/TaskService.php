@@ -5,7 +5,7 @@ class TaskService
     private TaskRepository $taskRepository;
 
     public function __construct(
-        TaskRepository $taskRepository,
+        TaskRepository $taskRepository
     ) {
         $this->taskRepository = $taskRepository;
     }
@@ -86,7 +86,7 @@ class TaskService
         return $task;
     }
 
-    public function completeTask($id, $userId): string|bool
+    public function completeTask($id, $userId)
     {
         $validateTaskResult = $this->taskRepository->validateTask($id, $userId);
         if (!$validateTaskResult) {
@@ -102,7 +102,7 @@ class TaskService
         return true;
     }
 
-    public function startTask($id, $userId): string|bool
+    public function startTask($id, $userId)
     {
         $validateTaskResult = $this->taskRepository->validateTask($id, $userId);
         if (!$validateTaskResult) {

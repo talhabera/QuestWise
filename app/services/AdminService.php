@@ -5,7 +5,7 @@ class AdminService
     private AdminRepository $adminRepository;
 
     public function __construct(
-        AdminRepository $adminRepository,
+        AdminRepository $adminRepository
     ) {
         $this->adminRepository = $adminRepository;
     }

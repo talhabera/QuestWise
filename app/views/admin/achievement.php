@@ -1,6 +1,6 @@
 <div class="container mt-4">
     <h1>Edit Achievement</h1>
-    <form action="/admin/achievement" method="POST">
+    <form action="/questwise/admin/achievement" method="POST">
         <input type="hidden" name="achievement_id" value="<?= $model->achievement['achievement_id'] ?>">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>

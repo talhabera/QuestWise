@@ -18,7 +18,7 @@ class HomeController extends Controller
         $this->view();
     }
 
-    public function weeklyTaskAction()
+    public function weekly_taskAction()
     {
         echo json_encode($this->taskService->getWeeklyCompletedTasks($_SESSION['username']));
     }

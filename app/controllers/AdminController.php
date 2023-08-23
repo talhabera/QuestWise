@@ -21,7 +21,7 @@ class AdminController extends Controller
         $this->achievementService = $achievementService;
 
         if (!isset($_SESSION['admin_username']) && $_SERVER['REQUEST_URI'] !== '/admin/login') {
-            header("Location: /admin/login");
+            header("Location: /questwise/admin/login");
             exit();
         }
     }
@@ -34,28 +34,28 @@ class AdminController extends Controller
     public function logoutAction()
     {
         unset($_SESSION['admin_username']);
-        header("Location: /admin/login");
+        header("Location: /questwise/admin/login");
         exit();
     }
 
     public function loginAction($error = null)
     {
         if ($_SESSION['admin_username']) {
-            header("Location: /admin");
+            header("Location: /questwise/admin");
             exit();
         }
 
         $this->view($error);
     }
 
-    public function loginPostAction()
+    public function login_postAction()
     {
         $username = $_POST['username'];
         $password = $_POST['password'];
 
         $result = $this->adminService->login($username, $password);
         if ($result === true) {
-            header("Location: /admin");
+            header("Location: /questwise/admin");
             exit();
         }
 
@@ -83,7 +83,7 @@ class AdminController extends Controller
         $this->view($model);
     }
 
-    public function userPostAction()
+    public function user_postAction()
     {
         $username = $_POST['username'];
         $email = $_POST['email'];
@@ -91,7 +91,7 @@ class AdminController extends Controller
 
         $this->userService->updateUser($username, $email, $avatarUrl);
 
-        header("Location: /admin/user/talhabera");
+        header("Location: /questwise/admin/user/$username");
         exit();
     }
 
@@ -116,7 +116,7 @@ class AdminController extends Controller
         $this->view($model);
     }
 
-    public function taskPostAction()
+    public function task_postAction()
     {
         $taskId = $_POST['task_id'];
         $title = $_POST['title'];
@@ -125,7 +125,7 @@ class AdminController extends Controller
 
         $this->taskService->updateTask($taskId, $title, $description, $dueDate, false);
 
-        header("Location: /admin/quest/$taskId");
+        header("Location: /questwise/admin/quest/$taskId");
         exit();
     }
 
@@ -142,7 +142,7 @@ class AdminController extends Controller
         $this->view($model);
     }
 
-    public function achievementPostAction()
+    public function achievement_postAction()
     {
         $achievementId = $_POST['achievement_id'];
         $title = $_POST['title'];
@@ -151,7 +151,7 @@ class AdminController extends Controller
 
         $this->achievementService->updateAchievement($achievementId, $title, $description, $points);
 
-        header("Location: /admin/achievement/$achievementId");
+        header("Location: /questwise/admin/achievement/$achievementId");
         exit();
     }
 

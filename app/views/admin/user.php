@@ -1,6 +1,6 @@
 <div class="container mt-4">
     <h1>Edit User</h1>
-    <form action="/admin/user" method="POST">
+    <form action="/questwise/admin/user" method="POST">
         <input type="hidden" name="username" value="<?= $model->user['username'] ?>">
         <div class="mb-3">
             <label for="username" class="form-label">Username: <?= $model->user['username'] ?></label>

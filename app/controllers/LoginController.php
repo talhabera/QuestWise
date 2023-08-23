@@ -11,7 +11,7 @@ class LoginController extends Controller
         $this->userService = $userService;
 
         if (isset($_SESSION['username']) && $_SERVER['REQUEST_URI'] !== '/logout') {
-            header("Location: /");
+            header("Location: /questwise/");
             exit();
         }
     }
@@ -69,10 +69,10 @@ class LoginController extends Controller
         $success = $this->userService->login($username, $password);
 
         if ($success) {
-            header("Location: /");
+            header("Location: /questwise/");
             exit();
         } else {
-            header("Location: /login?error=1");
+            header("Location: /questwise/login?error=1");
             exit();
         }
     }
@@ -85,19 +85,19 @@ class LoginController extends Controller
         $passwordAgain = $_POST['passwordAgain'];
 
         if ($password !== $passwordAgain) {
-            header("Location: /login?error=2&register=true");
+            header("Location: /questwise/login?error=2&register=true");
             exit();
         }
 
         $userExists = $this->userService->checkUserExists($username);
         if ($userExists) {
-            header("Location: /login?error=3&register=true");
+            header("Location: /questwise/login?error=3&register=true");
             exit();
         }
 
         $this->userService->registerUser($username, $email, $password);
 
-        header("Location: /login?success=1");
+        header("Location: /questwise/login?success=1");
         exit();
     }
 
@@ -105,7 +105,7 @@ class LoginController extends Controller
     {
         session_unset();
         session_destroy();
-        header("Location: /login");
+        header("Location: /questwise/login");
         exit();
     }
 }

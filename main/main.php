@@ -26,7 +26,8 @@ function handleRequest(Router $router)
     $basePath = str_replace('/index.php', '', $_SERVER['PHP_SELF']);
 
     $route = str_replace($basePath, '', $requestPath);
-
+    $route = str_replace('questwise/', '', strtolower($route));
+    
     $method = $_SERVER['REQUEST_METHOD'];
     
     $router->dispatch($route, $method);
@@ -46,7 +47,7 @@ function addDependencies(Container $container)
 }
 
 function addDbContexts(Container $container){
-    $container->bind(DbContext::class);
+    $container->bind(DbContext::class, new DbContext());
 }
 
 function addRepositories(Container $container)

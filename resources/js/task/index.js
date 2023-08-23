@@ -31,7 +31,7 @@ async function sendComment() {
 }
 
 async function postComment(taskId, comment) {
-    const url = '/send-comment';
+    const url = '/questwise/send-comment';
 
     const formData = new FormData();
     formData.append('taskId', taskId);
@@ -56,7 +56,7 @@ function prepareStartTask() {
         'Are you sure you want to start this task?',
         function () {
             var id = $('#taskId').val();
-            var url = '/start-quest/' + id;
+            var url = '/questwise/start-quest/' + id;
 
             $.ajax({
                 url: url,
@@ -81,14 +81,14 @@ function prepareCompleteTask() {
 
     $("#approveModalBtn").click(function () {
         var id = $('#taskId').val();
-        var url = '/complete-quest/' + id;
+        var url = '/questwise/complete-quest/' + id;
 
         $.ajax({
             url: url,
             method: 'POST',
             success: function (response) {
                 if (response == 1) {
-                    window.location.href = '/quests';
+                    window.location.href = '/questwise/quests';
                 }
             },
             error: function (response) {

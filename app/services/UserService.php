@@ -8,7 +8,7 @@ class UserService
     public function __construct(
         UserRepository $userRepository,
         TaskService $taskService,
-        AchievementService $achievementService,
+        AchievementService $achievementService
     ) {
         $this->userRepository = $userRepository;
         $this->taskService = $taskService;
@@ -58,7 +58,7 @@ class UserService
     public function updateSession()
     {
         if (!isset($_SESSION['username'])) {
-            header("Location: /logout");
+            header("Location: /questwise/logout");
             exit();
         }
 
@@ -73,7 +73,7 @@ class UserService
         return $users;
     }
 
-    public function getUser($username): array|null
+    public function getUser($username)
     {
         $user = $this->userRepository->getUser($username);
 

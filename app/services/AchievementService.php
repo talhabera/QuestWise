@@ -5,7 +5,7 @@ class AchievementService
     private AchievementRepository $achievementRepository;
 
     public function __construct(
-        AchievementRepository $achievementRepository,
+        AchievementRepository $achievementRepository
     ) {
         $this->achievementRepository = $achievementRepository;
     }
@@ -71,7 +71,7 @@ class AchievementService
         $this->achievementRepository->deleteAchievement($id);
     }
 
-    public function getAchievementByTitle($title): array|null
+    public function getAchievementByTitle($title)
     {
         $achievement = $this->achievementRepository->getAchievementByTitle($title);
 

@@ -1,7 +1,7 @@
 <div id="tasks" class="container">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">My Quests</h1>
-        <a class="btn btn-primary" href="/add-quest">
+        <a class="btn btn-primary" href="/questwise/add-quest">
             Create Quest
         </a>
     </div>
@@ -9,7 +9,7 @@
     <div class="row row-cols-1 row-cols-md-2 g-4">
         <?php foreach ($model->tasks as $task) : ?>
             <div class="col task-card">
-                <a href="quest/<?php echo $task['task_id'] ?>" class="text-decoration-none">
+                <a href="/questwise/quest/<?php echo $task['task_id'] ?>" class="text-decoration-none">
                     <div class="card">
                         <div class="card-header">
                             Due Date:
@@ -37,7 +37,7 @@
     <div class="row row-cols-1 row-cols-md-2 g-4">
         <?php foreach ($model->completedTasks as $task) : ?>
             <div class="col task-card">
-                <a href="quest/<?php echo $task['task_id'] ?>" class="text-decoration-none">
+                <a href="/questwise/quest/<?php echo $task['task_id'] ?>" class="text-decoration-none">
                     <div class="card">
                         <div class="card-header">
                             Completion Date:

@@ -15,8 +15,8 @@ class Controller
     {
         if ($loginRequired) {
             if (!isset($_SESSION['username'])) {
-                if (!str_starts_with($_SERVER['REQUEST_URI'], '/login') && !str_starts_with($_SERVER['REQUEST_URI'], '/register')) {
-                    header("Location: /login");
+                if (strpos($_SERVER['REQUEST_URI'], '/login') !== 0 && strpos($_SERVER['REQUEST_URI'], '/register') !== 0) {
+                    header("Location: /questwise/login");
                     exit();
                 }
             } else {
@@ -35,7 +35,7 @@ class Controller
     {
         $contentView = $this->getCurrentViewPath();
         if (!file_exists($contentView)) {
-            throw new Exception('View not found.'); // Redirect to 500 page
+            throw new Exception($contentView . ' View not found.'); // Redirect to 500 page
         }
 
         require_once '../app/views/index.php';
@@ -50,6 +50,6 @@ class Controller
     {
         $controller = str_replace('Controller', '', get_called_class());
         $action = strtolower(str_replace('Action', '', debug_backtrace()[2]['function']));
-        return "../app/views/{$controller}/{$action}.php";
+        return "../app/views/" . strtolower($controller) . "/$action.php";
     }
 }

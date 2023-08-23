@@ -21,7 +21,7 @@
             echo '<h5 class="card-title">' . $quest['title'] . '</h5>';
             echo '<p class="card-text">' . $quest['description'] . '</p>';
             echo '<p class="card-text">Due Date: ' . $quest['due_date'] . '</p>';
-            echo '<a href="/admin/quest/' . $quest['task_id'] . '" class="btn btn-primary">Edit</a>';
+            echo '<a href="/questwise/admin/quest/' . $quest['task_id'] . '" class="btn btn-primary">Edit</a>';
             echo '</div>';
             echo '</div>';
         }

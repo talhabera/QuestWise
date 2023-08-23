@@ -13,7 +13,7 @@ require_once '../app/controllers/AdminController.php';
 // Home page
 function initializeRoutes(Router $router){
     $router->get('/', HomeController::class, 'index');
-    $router->get('/home/weeklyTask', HomeController::class, 'weeklyTask');
+    $router->get('/home/weekly-quest', HomeController::class, 'weekly_task');
     $router->get('/home/quests', HomeController::class, 'tasks');
 
 
@@ -25,15 +25,15 @@ function initializeRoutes(Router $router){
 
 
     $router->get('/quest/{id}', TaskController::class, 'index');
-    $router->get('/add-quest', TaskController::class, 'addTask');
+    $router->get('/add-quest', TaskController::class, 'add_task');
     $router->get('/quests', TaskController::class, 'tasks');
-    $router->get('/complete-quest/{id}', TaskController::class, 'completeTask');
-    $router->get('/start-quest/{id}', TaskController::class, 'startTask');
+    $router->get('/complete-quest/{id}', TaskController::class, 'complete_task');
+    $router->get('/start-quest/{id}', TaskController::class, 'start_task');
 
-    $router->post('/add-quest', TaskController::class, 'addTaskPost');
+    $router->post('/add-quest', TaskController::class, 'add_task_post');
 
 
-    $router->post('/send-comment', CommentController::class, 'sendComment');
+    $router->post('/send-comment', CommentController::class, 'send_comment');
 
 
     $router->get('/achievements', AchievementController::class, 'index');
@@ -52,8 +52,8 @@ function initializeRoutes(Router $router){
     $router->get('/admin/achievements', AdminController::class, 'achievements');
     $router->get('/admin/achievement/{id}', AdminController::class, 'achievement');
 
-    $router->post('/admin/login', AdminController::class, 'loginPost');
-    $router->post('/admin/user', AdminController::class, 'userPost');
-    $router->post('/admin/quest', AdminController::class, 'taskPost');
-    $router->post('/admin/achievement', AdminController::class, 'achievementPost');
+    $router->post('/admin/login', AdminController::class, 'login_post');
+    $router->post('/admin/user', AdminController::class, 'user_post');
+    $router->post('/admin/quest', AdminController::class, 'task_post');
+    $router->post('/admin/achievement', AdminController::class, 'achievement_post');
 }

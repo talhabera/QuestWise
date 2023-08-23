@@ -8,9 +8,9 @@
             <div class="col-md-4">
                 <div class="achievement-card">
                     <?php if ($item['icon_url']) : ?>
-                        <img src="/resources/images/achievements/<?= $item['icon_url'] ?>" width="50" height="50" class="achievement-icon">
+                        <img src="/questwise/resources/images/achievements/<?= $item['icon_url'] ?>" width="50" height="50" class="achievement-icon">
                     <?php else : ?>
-                        <img src="/resources/images/achievements/default.png" width="50" height="50" class="achievement-icon">
+                        <img src="/questwise/resources/images/achievements/default.png" width="50" height="50" class="achievement-icon">
                     <?php endif; ?>
                     <h5 class="mt-3"><?= $item['title'] ?> <span class="points-value"><?= $item['points'] ?></span></h5>
                     <p class="text-muted">Earned on: <?= $item['achieved_date'] ?></p>
@@ -29,9 +29,9 @@
             <div class="col-md-4">
                 <div class="achievement-card">
                     <?php if ($item['icon_url']) : ?>
-                        <img src="/resources/images/achievements/<?= $item['icon_url'] ?>" width="50" height="50" class="achievement-icon">
+                        <img src="/questwise/resources/images/achievements/<?= $item['icon_url'] ?>" width="50" height="50" class="achievement-icon">
                     <?php else : ?>
-                        <img src="/resources/images/achievements/default.png" width="50" height="50" class="achievement-icon">
+                        <img src="/questwise/resources/images/achievements/default.png" width="50" height="50" class="achievement-icon">
                     <?php endif; ?>
                     <h5 class="mt-3"><?= $item['title'] ?> <span class="points-value"><?= $item['points'] ?></span></h5>
                     <p><?= $item['description'] ?></p>

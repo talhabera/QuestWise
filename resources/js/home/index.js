@@ -3,26 +3,6 @@ $(function () {
     fillTasks();
 });
 
-async function fetchTasks(url) {
-    try {
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to fetch tasks');
-        }
-
-        return response.json();
-    } catch (error) {
-        console.error(error);
-        return [];
-    }
-}
-
 function generateTaskListItem(task) {
     let dueDateSpan = "";
     if (task.due_date && task.status !== 'Completed') {
@@ -45,7 +25,7 @@ function generateTaskListItem(task) {
 
 async function fillTasks() {
     try {
-        const tasks = await fetchTasks('/home/quests');
+        const tasks = await fetchData('/questwise/home/quests');
 
         const list = $('#tasks');
         list.empty();
@@ -111,7 +91,7 @@ function renderWeeklyChart(labels, data) {
 
 async function fillWeeklyChart() {
     try {
-        const data = await fetchData('/home/weeklyTask');
+        const data = await fetchData('/questwise/home/weekly-quest');
         const taskCounts = populateTaskCounts(data);
         renderWeeklyChart(dayNames, taskCounts);
     } catch (error) {
@@ -120,5 +100,5 @@ async function fillWeeklyChart() {
 }
 
 function navigateToTask(id) {
-    window.location.href = `/quest/${id}`;
+    window.location.href = `/questwise/quest/${id}`;
 }

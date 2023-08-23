@@ -1,6 +1,6 @@
 <div class="container mt-4">
     <h1>Edit Quest</h1>
-    <form action="/admin/quest" method="POST">
+    <form action="/questwise/admin/quest" method="POST">
         <input type="hidden" name="task_id" value="<?= $model->task['task_id'] ?>">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>

@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="tab-pane fade <?php if (!$model->register) echo "show active" ?>" id="login-form">
-                            <form action="/login" method="POST">
+                            <form action="/questwise/login" method="POST">
                                 <?php if (!$model->register) echo $model->displayAlertMessage; ?>
                                 <div class="mb-3">
                                     <label for="loginUsername" class="form-label">Username</label>
@@ -33,7 +33,7 @@
                             </form>
                         </div>
                         <div class="tab-pane fade <?php if ($model->register) echo "show active" ?>" id="register-form">
-                            <form action="/register" method="POST">
+                            <form action="/questwise/register" method="POST">
                                 <?php if ($model->register) echo $model->displayAlertMessage; ?>
                                 <div class="mb-3">
                                     <label for="registerUsername" class="form-label">Username</label>
