@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 23 Ağu 2023, 10:16:22
+-- Üretim Zamanı: 23 Ağu 2023, 15:06:29
 -- Sunucu sürümü: 10.4.27-MariaDB
 -- PHP Sürümü: 8.1.12
 
@@ -113,7 +113,9 @@ INSERT INTO `comments` (`comment_id`, `user_id`, `task_id`, `comment_text`, `com
 (17, 1, 2352, 'adsadadads', '2023-08-23 01:04:06'),
 (18, 1, 11, 'merhaba', '2023-08-23 07:08:21'),
 (19, 1, 11, 'merhabaaaa', '2023-08-23 07:08:31'),
-(20, 1, 7, 'as', '2023-08-23 07:09:38');
+(20, 1, 7, 'as', '2023-08-23 07:09:38'),
+(21, 1, 2359, 'Comment', '2023-08-23 09:30:06'),
+(22, 1, 2359, 'Commenttt', '2023-08-23 09:30:16');
 
 -- --------------------------------------------------------
 
@@ -171,7 +173,7 @@ INSERT INTO `tasks` (`task_id`, `title`, `description`, `due_date`, `created_by`
 (8, 'Code Review', 'Review and provide feedback on team member\'s code changes.', '2023-08-24', 1, 5, 'Completed'),
 (9, 'Submit Expense Report', 'Submit the expense report for the last business trip.', '2023-08-27', 1, 1, 'Completed'),
 (10, 'Design Mockups', 'Create UI/UX design mockups for the new dashboard.', '2023-08-28', 1, 1, 'Completed'),
-(11, 'Team Huddle', 'Join the team huddle at 10:00 AM.', NULL, 1, 1, 'In Progress'),
+(11, 'Team Huddle', 'Join the team huddle at 10:00 AM.', NULL, 1, 1, 'Completed'),
 (12, 'Write Documentation', 'Document the new features introduced in the last release.', '2023-08-29', 1, 1, 'In Progress'),
 (2350, 'Task 1', 'Complete the first task.', '2023-08-25', 1, 2, 'To Do'),
 (2351, 'Task 2', 'Finish the second task.', '2023-08-27', 1, 1, 'Completed'),
@@ -181,7 +183,8 @@ INSERT INTO `tasks` (`task_id`, `title`, `description`, `due_date`, `created_by`
 (2355, 'Added Task', '123123123', '2024-12-13', 1, NULL, 'To Do'),
 (2356, 'Task New', 'New TaskTask', '2024-12-12', 1, NULL, 'To Do'),
 (2357, 'Task New Last', '123123', '2023-12-13', 1, 1, NULL),
-(2358, 'Anyone is there?', 'secret', '2019-12-12', 1, 1, 'To Do');
+(2358, 'Anyone is there?', 'asdasdasd', '2019-12-12', 1, 1, 'To Do'),
+(2359, 'Yeni Görev', 'Yeni görev 1123', '2024-12-12', 1, 1, 'Completed');
 
 -- --------------------------------------------------------
 
@@ -211,7 +214,9 @@ INSERT INTO `task_completions` (`task_completion_id`, `user_id`, `task_id`, `com
 (14, 1, 3, '2023-08-28 06:15:00'),
 (15, 4, 4, '2023-08-30 15:20:00'),
 (16, 5, 5, '2023-09-01 11:45:00'),
-(25, 1, 2351, '2023-08-22 22:48:45');
+(25, 1, 2351, '2023-08-22 22:48:45'),
+(26, 1, 11, '2023-08-23 09:29:26'),
+(27, 1, 2359, '2023-08-23 09:30:47');
 
 -- --------------------------------------------------------
 
@@ -238,7 +243,8 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `join_date`, `a
 (3, 'user1', 'user1@example.com', 'hashed_password1', '2023-08-22 21:33:50', 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/00/007136a83f9a456af194e7e636bceb70984cfd20.jpg'),
 (4, 'user2', 'user2@example.com', 'hashed_password2', '2023-08-22 21:33:50', 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/00/00056edd4c4cc780f5301738b7b413423dcda11a.jpg'),
 (5, 'user3', 'user3@example.com', 'hashed_password3', '2023-08-22 21:33:50', 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/00/00c0fce1c300153267b8d537b69c0fcde1d61aca.jpg'),
-(6, 'user4', 'user4@example.com', 'hashed_password4', '2023-08-22 21:33:50', 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/4d/4d9bd0b28d47e92fcfc14283474d4ba73a7a7e7d.jpg');
+(6, 'user4', 'user4@example.com', 'hashed_password4', '2023-08-22 21:33:50', 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/4d/4d9bd0b28d47e92fcfc14283474d4ba73a7a7e7d.jpg'),
+(8, 'aaaa', 'talha@gmail.com', '$2y$10$auqDDe8dA9mLv04/WCyh0OcNhboRdQ7gECPcdUFJa12deVLUtpwX6', '2023-08-23 11:02:23', NULL);
 
 -- --------------------------------------------------------
 
@@ -364,7 +370,7 @@ ALTER TABLE `admins`
 -- Tablo için AUTO_INCREMENT değeri `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `rewards`
@@ -376,19 +382,19 @@ ALTER TABLE `rewards`
 -- Tablo için AUTO_INCREMENT değeri `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2359;
+  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2360;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `task_completions`
 --
 ALTER TABLE `task_completions`
-  MODIFY `task_completion_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `task_completion_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `user_achievements`
