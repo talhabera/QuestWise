@@ -1,16 +1,29 @@
 <?php
+session_start();
 
 require_once '../config/config.php';
-require_once '../app/Router.php';
-require_once '../routes/web.php';
+
+require_once '../main/main.php';
+require_once '../main/DbContext.php';
+require_once '../main/Container.php';
+require_once '../main/Router.php';
 
 require_once '../app/controllers/Controller.php';
+require_once '../routes/web.php';
 
-$requestPath = $_SERVER['REQUEST_URI'];
-$basePath = str_replace('/index.php', '', $_SERVER['PHP_SELF']);
+/**
+ * Create a new container instance and add dependencies.
+ */
+$container = new Container();
+addDependencies($container);
 
-$route = str_replace($basePath, '', $requestPath);
+/**
+ * Create a new router instance and initialize routes.
+ */
+$router = new Router($container);
+initializeRoutes($router);
 
-$method = $_SERVER['REQUEST_METHOD'];
-
-Router::dispatch($route, $method);
+/**
+ * Handle the incoming request using the router.
+ */
+handleRequest($router);

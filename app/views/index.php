@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Jua" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit" rel="stylesheet">
 
     <!-- OpenGraph -->
     <meta property="og:title" content="QuestWise - Task Management with Gamification">
@@ -39,80 +39,112 @@
     <meta name="twitter:image" content="/resources/images/questwise.png">
 </head>
 
-<body data-bs-theme="dark">
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="/resources/questwise_logo.png" height="30" class="d-inline-block align-top" alt="QuestWise"></a>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/resources/images/questwise_nobg.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                QuestWise
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="groupsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Groups
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="groupsDropdown">
-                            <li><a class="dropdown-item" href="/teams">Teams</a></li>
-                            <li><a class="dropdown-item" href="/projects">Projects</a></li>
-                        </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/tasks">Tasks</a>
+                        <a class="nav-link" href="/quests">Quests</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/gamification/leaderboard">Leaderboard</a>
+                        <a class="nav-link" href="/achievements">Achievements</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/profile">Profile</a>
+                        <a class="nav-link" href="/users">Users</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/notifications">Notifications</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/help-and-support/faqs">Help & Support</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about-us/company-information">About Us</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://avatars.githubusercontent.com/u/91506632?v=4" alt="User Image" class="profile-image">
-                    User Name
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end profile-menu" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="/profile/settings">Settings</a></li>
-                    <li><a class="dropdown-item" href="/profile/change-password">Change Password</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    <?php if (isset($_SESSION['username'])) : ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php if (isset($_SESSION['user_avatar'])) : ?>
+                                    <img src="<?php echo $_SESSION['user_avatar']; ?>" id="userAvatar" alt="User Avatar" width="30" height="30" class="rounded-circle">
+                                <?php else : ?>
+                                    <img src="/resources/images/default_avatar.jpg" id="userAvatar" alt="User Avatar" width="30" height="30" class="rounded-circle">
+                                <?php endif; ?>
+                                <?php echo $_SESSION['username']; ?>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="/user/<?= $_SESSION['username'] ?>">Profile</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <div class="points-display shadow-sm">
+                                <span class="points-icon">
+                                    <img src="/resources/images/point.png" alt="Point Icon" width="20" height="20">
+                                </span>
+                                <span class="points-value"><?php echo $_SESSION['user_point'] ?></span>
+                            </div>
+                        </li>
+                    <?php else : ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div id="content">
-        <?php require_once $contentView; ?>
+    <div class="container-fluid">
+        <div class="row">
+            <main id="content" class="col-12 pt-3" id="content">
+                <?php require_once $contentView; ?>
+            </main>
+        </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer text-center py-3">
         <div class="container">
             &copy; 2023 QuestWise - Task Management with Gamification. All rights reserved.
         </div>
     </footer>
 
+    <div class="modal fade" id="approvalModal" tabindex="-1" role="dialog" aria-labelledby="approvalModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="approveModalLabel"></h5>
+                </div>
+                <div class="modal-body">
+                    <p id="approveModalMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="dismissModal" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary" id="approveModalBtn">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- External JS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Custom JS -->
     <script src="/resources/js/custom.js" defer></script>
+    <?php
+    $contentViewJsPath = str_replace('.php', '.js', $contentView); // Replaces ".php" with ".js"
+    $contentViewJsPath = str_replace('../app/views/', '/resources/js/', $contentViewJsPath); // Replaces the path segment
+
+    if (file_exists($_SERVER['DOCUMENT_ROOT'] . $contentViewJsPath)) {
+        echo '<script src="' . $contentViewJsPath . '" defer></script>';
+    }
+    ?>
 </body>
 
 </html>

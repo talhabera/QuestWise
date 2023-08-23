@@ -3,44 +3,95 @@ body {
     margin: 0;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    background-color: var(--primary-color);
-    font-family: 'Jua', serif;
-}
-
-header {
-    min-height: 50px;
+    font-family: 'Kanit', serif;
 }
 
 footer {
     min-height: 50px;
-    border-top: 1px solid #D0D1D2;
 }
 
-:root {
-    --primary-color: #212f45;
-    --secondary-color: #e8e8e8;
-    --tertiary-color: #bfbfbf;
-    --quaternary-color: #96939b;
+
+.points-display {
+    border-radius: 20px;
+    padding: 5px 10px;
+    display: flex;
+    margin-top: 5px;
 }
 
-.navbar {
-    background-color: transparent;
+.points-icon img {
+    display: block;
+    width: 20px;
+    height: 20px;
 }
 
-.navbar-light .navbar-toggler-icon {
-    background-color: rgba(255, 255, 255, 0.8);
+.points-value {
+    color: #ffc107;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+
+#homeDashboard .spinner-border {
+    width: 2rem;
+    height: 2rem;
+    border-width: 0.2em;
+}
+
+#homeDashboard .text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#homeDashboard .task-item {
+    cursor: pointer;
+}
+
+
+#tasks .task-card .card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#tasks .task-card .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#tasks .task-card .card:hover .card-body {
+    background-color: #494949;
+}
+
+#tasks .task-card .card-body {
+    transition: background-color 0.3s;
+}
+
+
+#achievements .achievement-card {
+    background-color: #414141;
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#achievements .achievement-icon {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    padding: 6px;
-}
-
-.navbar .profile-image {
-    width: 36px;
-    height: 36px;
     object-fit: cover;
-    border-radius: 50%;
 }
 
-.dropdown-menu {
-    background: var(--primary-color);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+#users .card {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#users .card:hover {
+    background-color: #23272e;
+    transform: scale(1.1);
 }
