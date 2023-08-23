@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Quests Page</h1>
+    <h1>Quests</h1>
 
     <!-- Search Form -->
     <form method="GET" action="">

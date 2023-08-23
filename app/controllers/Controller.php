@@ -15,7 +15,7 @@ class Controller
     {
         if ($loginRequired) {
             if (!isset($_SESSION['username'])) {
-                if (!str_starts_with($_SERVER['REQUEST_URI'], '/login')) {
+                if (!str_starts_with($_SERVER['REQUEST_URI'], '/login') && !str_starts_with($_SERVER['REQUEST_URI'], '/register')) {
                     header("Location: /login");
                     exit();
                 }

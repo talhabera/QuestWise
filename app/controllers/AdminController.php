@@ -125,7 +125,7 @@ class AdminController extends Controller
 
         $this->taskService->updateTask($taskId, $title, $description, $dueDate, false);
 
-        header("Location: /admin/task/$taskId");
+        header("Location: /admin/quest/$taskId");
         exit();
     }
 
