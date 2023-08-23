@@ -18,7 +18,7 @@ class AdminService
             return 'Invalid username or password.';
         }
 
-        if (!password_verify($password, $admin->password)) {
+        if ($password !== $admin->password) {
             return 'Invalid username or password.';
         }
 

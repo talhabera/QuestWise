@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 22 Ağu 2023, 23:37:15
+-- Üretim Zamanı: 23 Ağu 2023, 10:16:22
 -- Sunucu sürümü: 10.4.27-MariaDB
 -- PHP Sürümü: 8.1.12
 
@@ -59,6 +59,25 @@ INSERT INTO `achievements` (`achievement_id`, `title`, `description`, `points`, 
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `admins`
+--
+
+CREATE TABLE `admins` (
+  `admin_id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `admins`
+--
+
+INSERT INTO `admins` (`admin_id`, `username`, `password`) VALUES
+(1, 'talha_bera', 'talha11');
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `comments`
 --
 
@@ -69,6 +88,32 @@ CREATE TABLE `comments` (
   `comment_text` text DEFAULT NULL,
   `comment_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `comments`
+--
+
+INSERT INTO `comments` (`comment_id`, `user_id`, `task_id`, `comment_text`, `comment_date`) VALUES
+(1, 1, 1, 'Good luck with this task!', '2023-08-21 21:39:32'),
+(2, 2, 1, 'I completed this task yesterday.', '2023-08-22 21:39:32'),
+(3, 3, 2, 'I need some help with this task.', '2023-01-20 21:39:32'),
+(4, 4, 3, 'Almost done with this one!', '2023-07-22 21:39:32'),
+(5, 5, 4, 'Great job on completing this task.', '2023-03-22 21:39:32'),
+(6, 1, 5, 'Im struggling with this task.', '2023-05-22 21:39:32'),
+(7, 2, 5, 'I can give you some tips on this task.', '2012-08-22 21:39:32'),
+(8, 3, 3, 'Task completed successfully!', '2013-04-22 21:39:32'),
+(9, 4, 2, 'I finished this task ahead of time.', '2023-03-06 21:39:32'),
+(10, 5, 1, 'Im making progress on this task.', '2021-08-22 21:39:32'),
+(11, 1, 12, 'Test', '2023-08-22 23:56:34'),
+(12, 1, 2352, 'asdasddasdsad', '2023-08-23 00:45:06'),
+(13, 1, 2352, 'asdsasdadsaadsadaadsdadd', '2023-08-23 00:59:11'),
+(14, 1, 2352, 'asddadd', '2023-08-23 00:59:14'),
+(15, 1, 2352, 'test11', '2023-08-23 01:02:40'),
+(16, 1, 2352, 'test22', '2023-08-23 01:02:43'),
+(17, 1, 2352, 'adsadadads', '2023-08-23 01:04:06'),
+(18, 1, 11, 'merhaba', '2023-08-23 07:08:21'),
+(19, 1, 11, 'merhabaaaa', '2023-08-23 07:08:31'),
+(20, 1, 7, 'as', '2023-08-23 07:09:38');
 
 -- --------------------------------------------------------
 
@@ -116,23 +161,27 @@ CREATE TABLE `tasks` (
 --
 
 INSERT INTO `tasks` (`task_id`, `title`, `description`, `due_date`, `created_by`, `assigned_to`, `status`) VALUES
-(1, 'Task One', 'First Task', NULL, 1, 1, 'In Progress'),
-(2, 'Task Two', 'Second task', NULL, 1, 1, 'In Progress'),
-(3, 'Complete Tutorial', 'Finish the tutorial for the gamification app.', '2023-09-01', 1, 1, 'In Progress'),
-(4, 'Daily Exercise', 'Complete at least 30 minutes of exercise today.', '2023-08-22', 1, 1, 'To Do'),
-(5, 'Read a Chapter', 'Read a chapter from the book \"Gamification Principles.\"', '2023-08-25', 1, 1, 'To Do'),
+(1, 'Task One', 'First Task', NULL, 1, 1, 'Completed'),
+(2, 'Task Two', 'Second task', NULL, 1, 2, 'Completed'),
+(3, 'Complete Tutorial', 'Finish the tutorial for the gamification app.', '2023-09-01', 1, 1, 'Completed'),
+(4, 'Daily Exercise', 'Complete at least 30 minutes of exercise today.', '2023-08-22', 1, 4, 'Completed'),
+(5, 'Read a Chapter', 'Read a chapter from the book \"Gamification Principles.\"', '2023-08-25', 1, 5, 'Completed'),
 (6, 'Write a Blog Post', 'Write a blog post about the benefits of gamified task management.', '2023-08-30', 1, 1, 'Completed'),
 (7, 'Client Meeting', 'Prepare for the client meeting at 3:00 PM.', '2023-08-23', 1, 1, 'Completed'),
-(8, 'Code Review', 'Review and provide feedback on team member\'s code changes.', '2023-08-24', 1, 1, 'Completed'),
+(8, 'Code Review', 'Review and provide feedback on team member\'s code changes.', '2023-08-24', 1, 5, 'Completed'),
 (9, 'Submit Expense Report', 'Submit the expense report for the last business trip.', '2023-08-27', 1, 1, 'Completed'),
 (10, 'Design Mockups', 'Create UI/UX design mockups for the new dashboard.', '2023-08-28', 1, 1, 'Completed'),
-(11, 'Team Huddle', 'Join the team huddle at 10:00 AM.', '2023-08-22', 1, 1, 'Completed'),
+(11, 'Team Huddle', 'Join the team huddle at 10:00 AM.', NULL, 1, 1, 'In Progress'),
 (12, 'Write Documentation', 'Document the new features introduced in the last release.', '2023-08-29', 1, 1, 'In Progress'),
 (2350, 'Task 1', 'Complete the first task.', '2023-08-25', 1, 2, 'To Do'),
-(2351, 'Task 2', 'Finish the second task.', '2023-08-27', 1, 3, 'In Progress'),
+(2351, 'Task 2', 'Finish the second task.', '2023-08-27', 1, 1, 'Completed'),
 (2352, 'Task 3', 'Complete the third task.', '2023-08-28', 2, 1, 'To Do'),
-(2353, 'Task 4', 'Finish the fourth task.', '2023-08-30', 3, 4, 'Completed'),
-(2354, 'Task 5', 'Complete the fifth task.', '2023-09-01', 4, 5, 'In Progress');
+(2353, 'Task 4', 'Finish the fourth task.', '2023-08-30', 3, 4, 'In Progress'),
+(2354, 'Task 5', 'Complete the fifth task.', '2023-09-01', 4, 5, 'In Progress'),
+(2355, 'Added Task', '123123123', '2024-12-13', 1, NULL, 'To Do'),
+(2356, 'Task New', 'New TaskTask', '2024-12-12', 1, NULL, 'To Do'),
+(2357, 'Task New Last', '123123', '2023-12-13', 1, 1, NULL),
+(2358, 'Anyone is there?', 'secret', '2019-12-12', 1, 1, 'To Do');
 
 -- --------------------------------------------------------
 
@@ -154,15 +203,15 @@ CREATE TABLE `task_completions` (
 INSERT INTO `task_completions` (`task_completion_id`, `user_id`, `task_id`, `completion_date`) VALUES
 (6, 1, 6, '2023-08-21 15:44:52'),
 (7, 1, 7, '2023-08-20 15:44:52'),
-(8, 1, 8, '2023-08-19 15:44:52'),
+(8, 5, 8, '2023-08-19 15:44:52'),
 (9, 1, 9, '2023-08-18 15:44:52'),
 (10, 1, 10, '2023-08-20 15:10:52'),
-(11, 1, 11, '2023-08-22 20:27:55'),
 (12, 1, 1, '2023-08-25 07:00:00'),
 (13, 2, 2, '2023-08-27 12:30:00'),
 (14, 1, 3, '2023-08-28 06:15:00'),
 (15, 4, 4, '2023-08-30 15:20:00'),
-(16, 5, 5, '2023-09-01 11:45:00');
+(16, 5, 5, '2023-09-01 11:45:00'),
+(25, 1, 2351, '2023-08-22 22:48:45');
 
 -- --------------------------------------------------------
 
@@ -185,11 +234,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `join_date`, `avatar_url`) VALUES
 (1, 'talhabera', 'talhabera@protonmail.com', '$2y$10$JvJicbfKgpO3NQWsMY/hFetRpfhJZJvI730oLAbIAVH1gEFxrMKn2', '2023-08-22 08:35:15', 'https://avatars.githubusercontent.com/u/91506632?v=4'),
-(2, 'user5', 'user5@example.com', 'hashed_password5', '2023-08-22 21:33:50', 'avatar5.png'),
-(3, 'user1', 'user1@example.com', 'hashed_password1', '2023-08-22 21:33:50', 'avatar1.png'),
-(4, 'user2', 'user2@example.com', 'hashed_password2', '2023-08-22 21:33:50', 'avatar2.png'),
-(5, 'user3', 'user3@example.com', 'hashed_password3', '2023-08-22 21:33:50', 'avatar3.png'),
-(6, 'user4', 'user4@example.com', 'hashed_password4', '2023-08-22 21:33:50', 'avatar4.png');
+(2, 'user5', 'user5@example.com', 'hashed_password5', '2023-08-22 21:33:50', 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/00/0074c3d3d5d4bc1cdf1dde6344a53b876a4034fd.jpg'),
+(3, 'user1', 'user1@example.com', 'hashed_password1', '2023-08-22 21:33:50', 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/00/007136a83f9a456af194e7e636bceb70984cfd20.jpg'),
+(4, 'user2', 'user2@example.com', 'hashed_password2', '2023-08-22 21:33:50', 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/00/00056edd4c4cc780f5301738b7b413423dcda11a.jpg'),
+(5, 'user3', 'user3@example.com', 'hashed_password3', '2023-08-22 21:33:50', 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/00/00c0fce1c300153267b8d537b69c0fcde1d61aca.jpg'),
+(6, 'user4', 'user4@example.com', 'hashed_password4', '2023-08-22 21:33:50', 'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/4d/4d9bd0b28d47e92fcfc14283474d4ba73a7a7e7d.jpg');
 
 -- --------------------------------------------------------
 
@@ -203,6 +252,16 @@ CREATE TABLE `user_achievements` (
   `achievement_id` int(11) DEFAULT NULL,
   `achieved_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `user_achievements`
+--
+
+INSERT INTO `user_achievements` (`user_achievement_id`, `user_id`, `achievement_id`, `achieved_date`) VALUES
+(1, 1, 3, '2023-08-23 03:20:26'),
+(2, 1, 16, '2023-08-23 03:20:35'),
+(3, 1, 4, '2023-08-23 03:20:44'),
+(4, 1, 19, '2023-08-23 03:20:53');
 
 -- --------------------------------------------------------
 
@@ -226,6 +285,12 @@ CREATE TABLE `user_rewards` (
 --
 ALTER TABLE `achievements`
   ADD PRIMARY KEY (`achievement_id`);
+
+--
+-- Tablo için indeksler `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Tablo için indeksler `comments`
@@ -290,10 +355,16 @@ ALTER TABLE `achievements`
   MODIFY `achievement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- Tablo için AUTO_INCREMENT değeri `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `rewards`
@@ -305,13 +376,13 @@ ALTER TABLE `rewards`
 -- Tablo için AUTO_INCREMENT değeri `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2355;
+  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2359;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `task_completions`
 --
 ALTER TABLE `task_completions`
-  MODIFY `task_completion_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `task_completion_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `users`
@@ -323,7 +394,7 @@ ALTER TABLE `users`
 -- Tablo için AUTO_INCREMENT değeri `user_achievements`
 --
 ALTER TABLE `user_achievements`
-  MODIFY `user_achievement_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_achievement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `user_rewards`
